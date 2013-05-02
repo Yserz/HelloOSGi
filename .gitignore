@@ -1,6 +1,6 @@
 # Folder #
-/target/
-/.settings/
+*/target/
+*/.settings/
 
 # Files #
 .DS_Store
