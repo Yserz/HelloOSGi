@@ -43,6 +43,8 @@
 				<configuration>
 					<instructions>
 						<Bundle-Activator>de.fhb.osgeehelloservice.Activator</Bundle-Activator>
+						<Export-Package>de.fhb.osgeehelloservice</Export-Package>
+						<Private-Package>de.fhb.osgeehelloservice.*</Private-Package>
 					</instructions>
 				</configuration>
 			</plugin>
