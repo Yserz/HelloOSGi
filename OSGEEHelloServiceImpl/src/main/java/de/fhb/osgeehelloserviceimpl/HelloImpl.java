@@ -5,11 +5,13 @@
 package de.fhb.osgeehelloserviceimpl;
 
 import de.fhb.osgeehelloservice.Hello;
+import javax.ejb.Stateless;
 
 /**
  *
  * @author MacYser
  */
+@Stateless
 public class HelloImpl implements Hello {
 
 	public String sayHello(String name) {
