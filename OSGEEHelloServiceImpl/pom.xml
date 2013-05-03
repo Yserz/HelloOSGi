@@ -46,10 +46,31 @@
 				<version>2.3.7</version>
 				<extensions>true</extensions>
 				<configuration>
+					<supportedProjectTypes>
+						<supportedProjectType>ejb</supportedProjectType>
+						<supportedProjectType>war</supportedProjectType>
+						<supportedProjectType>bundle</supportedProjectType>
+						<supportedProjectType>jar</supportedProjectType>
+					</supportedProjectTypes>
 					<instructions>
 						<Bundle-Activator>de.fhb.osgeehelloserviceimpl.Activator</Bundle-Activator>
-						<Export-Package/>
 					</instructions>
+					<executions>
+						<execution>
+							<id>bundle-manifest</id>
+							<phase>process-classes</phase>
+							<goals>
+								<goal>manifest</goal>
+							</goals>
+						</execution>
+						<execution>
+							<id>bundle-install</id>
+							<phase>install</phase>
+							<goals>
+								<goal>install</goal>
+							</goals>
+						</execution>
+					</executions>
 				</configuration>
 			</plugin>
 			<plugin>
@@ -59,6 +80,34 @@
 				<configuration>
 					<source>1.6</source>
 					<target>1.6</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-ejb-plugin</artifactId>
+				<version>2.3</version>
+				<configuration>
+					<ejbVersion>3.1</ejbVersion>
+					<archive>
+						<!-- add bundle plugin generated manifest to the war -->
+						<manifestFile>
+							${project.build.outputDirectory}/META-INF/MANIFEST.MF
+						</manifestFile>
+						<!-- For some reason, adding Bundle-ClassPath in maven-bundle-plugin
+						confuses that plugin and it generates wrong Import-Package, etc.
+						So, we generate it here.
+						<manifestEntries>
+							<Bundle-ClassPath>WEB-INF/classes/</Bundle-ClassPath>
+						</manifestEntries>
+						-->
+						<manifestEntries>
+							<Export-EJB>ALL</Export-EJB>
+						</manifestEntries>
+					</archive>
+					<!--generateClient>true</generateClient>
+					<clientIncludes>
+						<clientInclude>de/fhb/account/remote/**</clientInclude>
+					</clientIncludes-->
 				</configuration>
 			</plugin>
 		</plugins>
