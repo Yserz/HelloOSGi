@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package de.fhb.osgeehelloserviceimpl;
+package de.fhb.osgeehelloservice.impl;
 
 import de.fhb.osgeehelloservice.Hello;
 import javax.ejb.Stateless;

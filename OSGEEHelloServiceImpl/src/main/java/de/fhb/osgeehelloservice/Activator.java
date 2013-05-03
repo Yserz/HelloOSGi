@@ -1,6 +1,7 @@
-package de.fhb.osgeehelloserviceimpl;
+package de.fhb.osgeehelloservice;
 
 import de.fhb.osgeehelloservice.Hello;
+import de.fhb.osgeehelloservice.impl.HelloImpl;
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 
